@@ -180,12 +180,12 @@ class ADS1x15:
       config |= self.spsADS1015.setdefault(sps, self.__ADS1015_REG_CONFIG_DR_1600SPS)
     else:
       if ( (sps not in self.spsADS1115) & self.debug):	  
-	print "ADS1x15: Invalid pga specified: %d, using 6144mV" % sps     
+	print "ADS1x15: Invalid sps specified: %d, using 250SPS" % sps     
       config |= self.spsADS1115.setdefault(sps, self.__ADS1115_REG_CONFIG_DR_250SPS)
 
     # Set PGA/voltage range, defaults to +-6.144V
     if ( (pga not in self.pgaADS1x15) & self.debug):	  
-      print "ADS1x15: Invalid pga specified: %d, using 6144mV" % sps     
+      print "ADS1x15: Invalid pga specified: %d, using 6144mV" % pga     
     config |= self.pgaADS1x15.setdefault(pga, self.__ADS1015_REG_CONFIG_PGA_6_144V)
     self.pga = pga
 
@@ -211,7 +211,7 @@ class ADS1x15:
     # We add 0.1ms to be sure
     delay = 1.0/sps+0.0001
     time.sleep(delay)
-
+    
     # Read the conversion results
     result = self.i2c.readList(self.__ADS1015_REG_POINTER_CONVERT, 2)
     if (self.ic == self.__IC_ADS1015):
@@ -366,12 +366,12 @@ class ADS1x15:
       config |= self.spsADS1015.setdefault(sps, self.__ADS1015_REG_CONFIG_DR_1600SPS)
     else:
       if ( (sps not in self.spsADS1115) & self.debug):	  
-	print "ADS1x15: Invalid pga specified: %d, using 6144mV" % sps     
+	print "ADS1x15: Invalid sps specified: %d, using 250SPS" % sps     
       config |= self.spsADS1115.setdefault(sps, self.__ADS1115_REG_CONFIG_DR_250SPS)
   
     # Set PGA/voltage range, defaults to +-6.144V
     if ( (pga not in self.pgaADS1x15) & self.debug):	  
-      print "ADS1x15: Invalid pga specified: %d, using 6144mV" % sps     
+      print "ADS1x15: Invalid pga specified: %d, using 6144mV" % pga     
     config |= self.pgaADS1x15.setdefault(pga, self.__ADS1015_REG_CONFIG_PGA_6_144V)
     self.pga = pga 
     
@@ -439,12 +439,12 @@ class ADS1x15:
       config |= self.spsADS1015.setdefault(sps, self.__ADS1015_REG_CONFIG_DR_1600SPS)
     else:
       if ( (sps not in self.spsADS1115) & self.debug):	  
-	print "ADS1x15: Invalid pga specified: %d, using 6144mV" % sps     
+	print "ADS1x15: Invalid sps specified: %d, using 250SPS" % sps
       config |= self.spsADS1115.setdefault(sps, self.__ADS1115_REG_CONFIG_DR_250SPS)
   
     # Set PGA/voltage range, defaults to +-6.144V
     if ( (pga not in self.pgaADS1x15) & self.debug):	  
-      print "ADS1x15: Invalid pga specified: %d, using 6144mV" % sps     
+      print "ADS1x15: Invalid pga specified: %d, using 6144mV" % pga
     config |= self.pgaADS1x15.setdefault(pga, self.__ADS1015_REG_CONFIG_PGA_6_144V)
     self.pga = pga 
     
